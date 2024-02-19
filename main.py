@@ -5,7 +5,7 @@ from string import ascii_uppercase
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "dsmnejndsmdnsm83749281828281"
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 
 rooms = {}
