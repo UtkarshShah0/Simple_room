@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_socketio import join_room, leave_room, send, SocketIO
-import random, os
+import random
 from string import ascii_uppercase
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+app.config["SECRET_KEY"] = "dsmnejndsmdnsm83749281828281"
 socketio = SocketIO(app)
 
 
@@ -57,7 +57,7 @@ def room():
     if room is None or session.get("name") is None or room not in rooms:
         return redirect(url_for("home"))
     
-    return render_template("room.html", code=room, messages = room[room]["messages"])
+    return render_template("room.html", code=room, messages = rooms[room]["messages"])
 
 
 @socketio.on("message")
